@@ -99,6 +99,18 @@ while newGame:
 
                         row,col = strToCoord("Escolha um dos possíveis movimentos: ")
                         if [row,col] in board[piecePos[0]][piecePos[1]].possibleMoves(piecePos, board):
+
+                                #check castle
+                                if type(board[piecePos[0]][piecePos[1]]) == King and board[piecePos[0]][piecePos[1]].firstMove == True:
+                                        if piecePos[1]+2 == col:
+                                                board[row][col-1] = board[row][col+1]
+                                                board[row][col+1] = 0
+                                        elif piecePos[1]-2 == col:
+                                                board[row][col+1] = board[row][col-2]
+                                                board[row][col-2] = 0
+
+
+                                #assign new position
                                 board[row][col] = board[piecePos[0]][piecePos[1]]
                                 board[piecePos[0]][piecePos[1]] = 0
 
@@ -143,12 +155,3 @@ while newGame:
                 newGame = True
         else:
                 newGame = False
-
-
-#print(board[7][4].possibleMoves([7,4],board))
-
-
-
-#TODO CHECK FOR CASTLE AND MOVE ROOK TOO WHEN IT HAPPENS
-#TODO add repeat function
-input("enter to quit")
