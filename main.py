@@ -7,15 +7,28 @@ from king import King
 
 
 #prints board with proper characters
-def showBoard(board):
-        for row in range(8):
-                for col in range(8):
-                        if type(board[row][col]) != int:
-                                x = board[row][col].text
-                        else: x = "▯"
-                        if col != 7:
-                                print(x, end=" ")
-                        else: print(x)
+def showBoard(board, side):
+
+        if side == 0:
+                for row in range(8):
+                        for col in range(8):
+                                if type(board[row][col]) != int:
+                                        x = board[row][col].text
+                                else: x = "▯"
+                                if col != 7:
+                                        print(x, end=" ")
+                                else: print(x)
+
+        #changes board for black side
+        else:
+                for row in range(8):
+                        for col in range(8):
+                                if type(board[7-row][7-col]) != int:
+                                        x = board[7-row][7-col].text
+                                else: x = "▯"
+                                if col != 7:
+                                        print(x, end=" ")
+                                else: print(x)
 
 
 #board with all the pieces
@@ -67,7 +80,7 @@ while newGame:
 
         while repeat:
 
-                showBoard(board)
+                showBoard(board, side)
 
                 #gets piece to be moved
                 while True:
