@@ -91,8 +91,10 @@ while newGame:
                         if row >= 0 and row <= 7 and col >= 0 and col <= 7:
                                 if board[row][col] != 0:
                                         if board[row][col].side == side:
-                                                piecePos = [row,col]
-                                                break
+                                                if len(board[row][col].possibleMoves([row,col], board)) != 0:
+                                                        piecePos = [row,col]
+                                                        break
+                                                else: print("Essa peça não pode se mover, escolha outra")
 
                                         else: print("Escolha uma das peças",sideStr)
 
