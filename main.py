@@ -76,7 +76,8 @@ def coordToStr(coords):
 
 
 #start of game loop
-
+wWin = 0
+bWin = 0
 newGame = True
 while newGame:
 
@@ -166,10 +167,16 @@ while newGame:
                                                 blackKing += 1
 
                 if whiteKing == 0:
+                        bWin += 1
                         print("Vitória das peças pretas, parabéns!")
+                        print("Brancas:",wWin)
+                        print("Pretas:",bWin)
                         repeat = 0
                 elif blackKing == 0:
+                        wWin += 1
                         print("Vitória das peças brancas, parabéns!")
+                        print("Brancas:",wWin)
+                        print("Pretas:",bWin)
                         repeat = 0
 
         newGameStr = input("Deseja jogar novamente (s/n)? ")
