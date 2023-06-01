@@ -46,6 +46,8 @@ board = [
         [Pawn(0),Pawn(0),Pawn(0),Pawn(0),Pawn(0),Pawn(0),Pawn(0),Pawn(0),],
         [Rook(0),Knight(0),Bishop(0),Queen(0),King(0),Bishop(0),Knight(0),Rook(0)]
         ]
+#backup board to reset later
+backupboard = [row[:] for row in board]
 
 #asks user to input a position ex:d4 and return its coordinate on the board
 def strToCoord(message):
@@ -81,6 +83,7 @@ while newGame:
         side = 0
         sideStr = "Brancas"
         repeat = True
+        board = [row[:] for row in backupboard]
 
         while repeat:
 
