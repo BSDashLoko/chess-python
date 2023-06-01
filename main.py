@@ -11,6 +11,7 @@ def showBoard(board, side):
 
         if side == 0:
                 for row in range(8):
+                        print(8-row, end=" ")
                         for col in range(8):
                                 if type(board[row][col]) != int:
                                         x = board[row][col].text
@@ -18,10 +19,12 @@ def showBoard(board, side):
                                 if col != 7:
                                         print(x, end=" ")
                                 else: print(x)
+                print("a b c d e f g h")
 
         #changes board for black side
         else:
                 for row in range(8):
+                        print(row+1, end=" ")
                         for col in range(8):
                                 if type(board[7-row][7-col]) != int:
                                         x = board[7-row][7-col].text
@@ -29,6 +32,7 @@ def showBoard(board, side):
                                 if col != 7:
                                         print(x, end=" ")
                                 else: print(x)
+                print("h g f e d c b a")
 
 
 #board with all the pieces
