@@ -19,7 +19,7 @@ def showBoard(board, side):
                                 if col != 7:
                                         print(x, end=" ")
                                 else: print(x)
-                print("a b c d e f g h")
+                print("  a b c d e f g h")
 
         #changes board for black side
         else:
@@ -32,7 +32,7 @@ def showBoard(board, side):
                                 if col != 7:
                                         print(x, end=" ")
                                 else: print(x)
-                print("h g f e d c b a")
+                print("  h g f e d c b a")
 
 
 #board with all the pieces
