@@ -9,10 +9,15 @@ Quando é iniciado o loop de jogo, ele define o primeiro lado a jogar como as br
 
 Com isso, a jogada é terminada e se troca-se as variáveis side e sideStr para a outra cor, se era a vez das peças brancas, agora é das pretas e vice-versa. Depois se checa se algum Rei foi derrotado, para dar a vitória ao outro lado, é checado a existência de um Rei de cada cor, para continuar o jogo, senão, acabá-lo e adicionar uma vitória para o vencedor em uma das variáveis (wWin e bWin). E, se a partida acabar, é perguntado se o loop newGame será reiniciado ou não.
 
+### showBoard()
+Essa função leva como argumentos o tabuleiro e o lado para qual o tabuleiro será apresentado. Então se itera sobre cada elemento da matriz (começando pela última linha no caso das peças pretas, para inverter a visão do tabuleiro), trocando o 0 por ▯ e as peças pelo unicode da peça com o atributo [nome da peça].text. No começo de cada linha é printado o número dessa linha, e no final é adicionado a letra correspondente de cada coluna.
+
 ### strToCoord()
+A função leva como argumento uma mensagem que será mostrada ao usuário para pedir uma posição de xadrez, se checa se a string digitada possui uma letra na primeira posição e um número na segunda, sem mais caracteres. Então a letra se transforma no número da coluna com ord, e diminuindo 97 do valor, para que a=0; b=1; c=2 e assim por diante, já o número, subtrái-se ele de 8 para resultar no número da linha, para que 1 = 7; 2 = 6; de acordo com a nomenclatura de posição de xadrez.
 
 
 ### coordToStr()
+Essa função faz o processo inverso da strToCoord, transformando a coluna na letra correspondente com chr e o número da linha em nomenclatura de xadrez.
 
 # Classes de peça
 Todas as peçar possuem uma classe atribuída a ela, todas com um construtor com o atributo side, que define self.side da peça, o lado, em que 0 são as peças brancas e 1 são as peças pretas, e com base nisso, o side.text é definido como um unicode do time correspondente. Além disso, é definido self.firstMove = True para a lógica de certas peças. E principalmente, há a função possibleMoves(), que toma o tabuleiro e a posição da peça para definir para quais casas certa peça pode ir segundo a lógica específica de cada peça.
