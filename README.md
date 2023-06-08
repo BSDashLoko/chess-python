@@ -1,13 +1,20 @@
 # chess python
 
  - chess minigame in python console
- 
+
+# Explicação inicial
+O código tem a função de criar um jogo de xadrez, em um tabuleiro 8x8, seguindo as regras de movimento de cada peça, com cada jogador tendo sua vez de realizar seu movimento, com a adição de movimentos específicos como o roque, e o jogo acaba quando algum dos reis é eliminado.
+
 # Game Loop
 O main.py importa as classes das outras peças, inicializa o tabuleiro com 0 nas posições vazias e uma instância da peça no lugar do tabuleiro que ela fica, definindo seu lado no construtor (0 são peças brancas e 1 são peças pretas).
 
 Quando é iniciado o loop de jogo, ele define o primeiro lado a jogar como as brancas, reseta o tabuleiro com base no backup e inicia o loop de jogada chamado repeat, nele o tabuleiro é mostrado com base no lado que está jogando (função showBoard() que itera sobre o tabuleiro substituindo 0 por ▯ e as peças pelo unicode da peça com o atributo [nome da peça].text) e ele pega do usuário a posição da peça a ser movida (row,col) a partir da função strToCoord() que checa se a string digitada é uma posição válida e transforma, por exemplo, e3 em (5,4), com isso, o programa checa se a posição é válida (está no tabuleiro, e é a posição de uma peça do lado que está jogando e que pode se mover) e quando o usuário digita uma posição válida ela é salva em piecePos. Agora o outro loop printa as possiveis posições que a peça pode se mover, pelo método possibleMoves() presente em todas as classes, que dita as regras do xadrez, e pelo método coordToStr(), que faz o inverso da strToCoord(), retornando, por exemplo, e3 com as coordenadas (5,4). Com a lista de possíveis movimentos, o programa pede a posição para se mover com strToCoord(), se a coordenada está contida em possibleMoves, ele atribui a essa coordenada o valor da peça, e deixa o local antigo dela vazio. Além disso, nessa parte do código é checado se houve o roque (não se o roque é possível), se a peça movida foi um Rei e se ela se movimentou 2 casas, e, se sim, ele move também a torre para o lado oposto do movimento do Rei.
 
+![tabuleiro](https://github.com/BSDashLoko/chess-python/blob/main/board.png)
+
 Com isso, a jogada é terminada e se troca-se as variáveis side e sideStr para a outra cor, se era a vez das peças brancas, agora é das pretas e vice-versa. Depois se checa se algum Rei foi derrotado, para dar a vitória ao outro lado, é checado a existência de um Rei de cada cor, para continuar o jogo, senão, acabá-lo e adicionar uma vitória para o vencedor em uma das variáveis (wWin e bWin). E, se a partida acabar, é perguntado se o loop newGame será reiniciado ou não.
+
+![vitoria](https://github.com/BSDashLoko/chess-python/blob/main/win.png)
 
 ### showBoard()
 Essa função leva como argumentos o tabuleiro e o lado para qual o tabuleiro será apresentado. Então se itera sobre cada elemento da matriz (começando pela última linha no caso das peças pretas, para inverter a visão do tabuleiro), trocando o 0 por ▯ e as peças pelo unicode da peça com o atributo [nome da peça].text. No começo de cada linha é printado o número dessa linha, e no final é adicionado a letra correspondente de cada coluna.
@@ -31,6 +38,8 @@ Explicado isso vamos entrar no loop do while, ele delimita o tamanho do tabuleir
 
 Isso se repetirá com os outros 3 loops do while, a unica diferença sera na subtração ou adiçao de colunas e linhas, por exemplo no up right, é necessário somar a coluna pois a coluna vai para a direita, mas ainda assim diminui a linha. Outra diferença também está no while, pois agora a coluna esta : pCol <= 7, pois a peça so pode ir ate no maximo a coluna 7. O mesmo conceito se aplica para os outros whiles.
 Ao fim dos 4 loops temos a função return result, assim todas as opções possiveis observadas pelo while irão compor a lista result que antes estava vazia.
+
+![bishop](https://github.com/BSDashLoko/chess-python/blob/main/bishop.png)
 
 
 ### Torre (Rook)
@@ -77,3 +86,10 @@ Primeiramente será checado o time do peão, para definir a variável front, que
 Então o programa vai checar se o peão pode andar para frente dentro dos parametros do tabuleiro (linhas de 0 a 7). Se for possível e nao tiver peças no local ele ira adicionar a posição ao result, se essa condição for completada, depois, ele irá checar se é o primeiro movimento daquele peão, para também adicionar a casa 2 casas a frente do peão, caso essa casa estiver vazia.
 
 Então, é checado a possibilidade de comer peças na diagonal, vendo a situação da casa a frente na esquerda e direita, se a casa possuir uma peça inimiga, a possição é adicionada ao result que será retornado.
+
+
+
+# Considerações Finais
+Esse repositório foi feito como uma atividade de Universidade, pelos seguintes alunos:
+- Nicholas Cartaxo RGM: 32953381
+- William Henrique RGM: 34311874
